@@ -4,5 +4,6 @@ byobu:
 vim-enhanced:
   pkg.latest
 
-
+virt-what:
+  pkg.latest
 
