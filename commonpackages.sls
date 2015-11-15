@@ -1,7 +1,11 @@
 byobu:
-  pkg.installed
+  pkg.latest
 
+cronolog:
+  pkg.latest
+  
 vim-enhanced:
-  pkg.installed
+  pkg.latest
+
 
 
