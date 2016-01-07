@@ -1,3 +1,4 @@
+{%- set jboss_domain_controller = salt['grains.get']('jboss_domain_controller', False) %}
 mount_mnt_data:
   mount.mounted:
     - name: /mnt/data
@@ -16,8 +17,7 @@ mount_mnt_logs:
     - persist: True
     - opts: {{ salt['pillar.get']('mount_opts', 'vers=3,noatime,rsize=32768,wsize=32768,hard,intr,timeo=600') }}
 
-{%- if 'jboss-domain-controller' in salt['grains.get']('roles') %}
-
+{%- if jboss_domain_controller == true %}  
 mount_mnt_shared_logs:
   mount.mounted:
     - name: /mnt/logroot
@@ -26,5 +26,4 @@ mount_mnt_shared_logs:
     - mkmnt: True
     - persist: True
     - opts: {{ salt['pillar.get']('mount_opts', 'vers=3,noatime,rsize=32768,wsize=32768,hard,intr,timeo=600') }}
-
 {% endif %}
